@@ -5,41 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK Mortgage Rate Tracker – Spot Drops & Save</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-    h1 { text-align: center; color: #333; }
-    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-    th { background: #f4f4f4; font-weight: bold; }
-    .alert-form { background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 30px 0; }
-    input, select, button { padding: 10px; margin: 8px 0; font-size: 16px; }
-    button { background: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px; }
-    button:hover { background: #0056b3; }
-    footer { margin-top: 50px; text-align: center; color: #666; font-size: 14px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+    header {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 0 0 16px 16px;
+      margin-bottom: 30px;
+    }
+    h1 { margin: 0; font-size: 2.5em; }
+    header p { font-size: 1.3em; max-width: 800px; margin: 20px auto 0; opacity: 0.95; }
+    h2 { color: #222; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 40px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td { padding: 14px; text-align: left; border-bottom: 1px solid #eee; }
+    th {
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover { background: #0056b3; }
+    tr:nth-child(even) { background: #f8f9fa; }
+    tr:hover { background: #e9ecef; }
+    .alert-form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 40px 0;
+    }
+    input, select, button {
+      padding: 12px;
+      margin: 10px 8px 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover { background: #218838; }
+    .disclaimer {
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #666;
+      border-top: 1px solid #ddd;
+      margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+      table thead { display: none; }
+      tr { display: block; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: white; }
+      td { display: block; text-align: right; position: relative; padding-left: 50%; border: none; }
+      td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>UK Mortgage Rate Tracker</h1>
-  <p style="text-align: center;">Track the best UK fixed-rate mortgage deals daily. Last updated: <span id="updated">Loading...</span><br>
-  Data from trusted sources like HomeOwners Alliance, Uswitch, L&C. <a href="https://github.com/Rent-checker-CEO/mortgage-rate-tracker">Source on GitHub</a></p>
-  
-  <h2>Top Fixed-Rate Deals (60% LTV focus)</h2>
+  <header>
+    <h1>UK Mortgage Rate Tracker</h1>
+    <p>Daily updated best fixed-rate deals — spot drops and save thousands on your remortgage. Free email alerts when rates fall below your target.</p>
+  </header>
+
+  <p class="disclaimer">Not financial advice. Rates change daily — always verify with lenders or a broker. Data sourced from HomeOwners Alliance, Uswitch, L&C etc.</p>
+
+  <h2>Top Fixed-Rate Deals (Focus on 60% LTV)</h2>
+  <p>Last updated: <span id="updated">Loading...</span> | <a href="https://github.com/Rent-checker-CEO/mortgage-rate-tracker">Update source on GitHub</a></p>
+
   <table id="deals-table">
     <thead>
       <tr>
-        <th>Term</th>
-        <th>Lender</th>
-        <th>Rate (%)</th>
-        <th>LTV (%)</th>
-        <th>Fee (£)</th>
-        <th>Notes</th>
+        <th data-label="Term">Term</th>
+        <th data-label="Lender">Lender</th>
+        <th data-label="Rate (%)">Rate (%)</th>
+        <th data-label="LTV (%)">LTV (%)</th>
+        <th data-label="Fee (£)">Fee (£)</th>
+        <th data-label="Notes">Notes</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
 
   <div class="alert-form">
-    <h3>Get Free Email Alerts When Rates Drop</h3>
-    <p>We'll notify you (coming soon) if rates fall below your threshold.</p>
+    <h3>Get Free Alerts When Rates Drop</h3>
+    <p>Enter your target and we'll notify you (setup coming soon via email).</p>
     <form id="alertForm">
       <input type="email" id="email" placeholder="your@email.com" required>
       <input type="number" id="threshold" step="0.01" min="0" placeholder="e.g. 4.0" required>
@@ -47,9 +129,9 @@
         <option value="2 Year Fixed">2 Year Fixed</option>
         <option value="5 Year Fixed">5 Year Fixed</option>
       </select>
-      <button type="submit">Sign Up for Alerts</button>
+      <button type="submit">Sign Up</button>
     </form>
-    <p id="formMessage" style="color: green;"></p>
+    <p id="formMessage" style="color: #28a745; margin-top: 10px;"></p>
   </div>
 
   <script>
@@ -61,32 +143,55 @@
       .then(data => {
         document.getElementById('updated').textContent = data.updated;
         const tbody = document.querySelector('#deals-table tbody');
+        tbody.innerHTML = ''; // Clear any old rows
         data.deals.forEach(deal => {
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td>${deal.term}</td>
-            <td>${deal.lender}</td>
-            <td>${deal.rate}</td>
-            <td>${deal.ltv}</td>
-            <td>${deal.fee}</td>
-            <td>${deal.notes}</td>
+            <td data-label="Term">${deal.term}</td>
+            <td data-label="Lender">${deal.lender}</td>
+            <td data-label="Rate (%)">${deal.rate}</td>
+            <td data-label="LTV (%)">${deal.ltv}</td>
+            <td data-label="Fee (£)">${deal.fee}</td>
+            <td data-label="Notes">${deal.notes}</td>
           `;
           tbody.appendChild(row);
         });
       })
       .catch(err => {
         console.error('Error:', err);
-        document.getElementById('updated').textContent = 'Error loading data – check deals.json';
+        document.getElementById('updated').textContent = 'Error loading data – check deals.json file';
       });
 
+    // Table sorting
+    const headers = document.querySelectorAll('#deals-table th');
+    headers.forEach((header, index) => {
+      header.addEventListener('click', () => {
+        const table = document.getElementById('deals-table');
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const isNumeric = [2, 3, 4].includes(index); // rate, ltv, fee columns
+        rows.sort((a, b) => {
+          let valA = a.cells[index].textContent.trim();
+          let valB = b.cells[index].textContent.trim();
+          if (isNumeric) {
+            valA = parseFloat(valA) || 0;
+            valB = parseFloat(valB) || 0;
+            return valA - valB; // ascending; click again for descending if you want toggle later
+          }
+          return valA.localeCompare(valB);
+        });
+        rows.forEach(row => table.querySelector('tbody').appendChild(row));
+      });
+    });
+
+    // Alert form placeholder
     document.getElementById('alertForm').addEventListener('submit', e => {
       e.preventDefault();
-      document.getElementById('formMessage').textContent = 'Thanks! Alert setup in progress – check back soon.';
+      document.getElementById('formMessage').textContent = 'Thanks! Alerts are in progress — we\'ll email you soon when rates drop.';
     });
   </script>
 
   <footer>
-    <p>Premium upgrades coming soon via Gumroad: £1.99 for premium alerts + template | £9.99 remortgage checklist PDF</p>
+    <p>Premium options coming: £1.99 premium alerts + template | £9.99 full remortgage checklist PDF via Gumroad</p>
   </footer>
 </body>
 </html>
