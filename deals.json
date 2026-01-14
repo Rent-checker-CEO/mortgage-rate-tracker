@@ -1,1 +1,77 @@
-
+{
+  "updated": "2026-01-14",
+  "deals": [
+    {
+      "term": "2 Year Fixed",
+      "lender": "Santander",
+      "rate": 3.55,
+      "ltv": 60,
+      "fee": 749,
+      "notes": "Purchase/remortgage, competitive low-fee option",
+      "source": "HomeOwners Alliance / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "2 Year Fixed",
+      "lender": "NatWest",
+      "rate": 3.57,
+      "ltv": 60,
+      "fee": 1495,
+      "notes": "Purchase/remortgage, quick processing",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "2 Year Fixed",
+      "lender": "Halifax",
+      "rate": 3.57,
+      "ltv": 60,
+      "fee": 1099,
+      "notes": "Part of Lloyds Banking Group",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "2 Year Fixed",
+      "lender": "Lloyds",
+      "rate": 3.57,
+      "ltv": 60,
+      "fee": 1199,
+      "notes": "Standard high-street deal",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "2 Year Fixed",
+      "lender": "Barclays",
+      "rate": 3.57,
+      "ltv": 60,
+      "fee": 899,
+      "notes": "Good fee balance",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "5 Year Fixed",
+      "lender": "NatWest",
+      "rate": 3.74,
+      "ltv": 60,
+      "fee": 1495,
+      "notes": "Strong long-term option",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "5 Year Fixed",
+      "lender": "First Direct",
+      "rate": 3.75,
+      "ltv": 60,
+      "fee": 490,
+      "notes": "Low fee, HSBC group",
+      "source": "HOA / L&C, 14 Jan 2026"
+    },
+    {
+      "term": "5 Year Fixed",
+      "lender": "Barclays",
+      "rate": 3.76,
+      "ltv": 60,
+      "fee": 958,
+      "notes": "Remortgage focused",
+      "source": "HOA / L&C, 14 Jan 2026"
+    }
+  ]
+}
