@@ -5,101 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK Mortgage Rate Tracker – Spot Drops & Save</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #333;
-      background: #f8f9fa;
-    }
-    header {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-      border-radius: 0 0 16px 16px;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 15px;
-    }
-    h1 { margin: 0; font-size: 2.5em; }
-    header p { font-size: 1.3em; max-width: 800px; margin: 15px auto 0; opacity: 0.95; }
-    h2, h3 { color: #222; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 40px; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 30px 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-    }
+    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; background: #f8f9fa; }
+    header { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 60px 20px; text-align: center; border-radius: 0 0 16px 16px; margin-bottom: 30px; }
+    .logo { width: 80px; height: 80px; margin-bottom: 15px; }
+    h1 { margin: 0; font-size: 2.8em; }
+    h2 { color: #222; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 40px; }
+    table { width: 100%; border-collapse: collapse; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background: white; border-radius: 8px; overflow: hidden; }
     th, td { padding: 14px; text-align: left; border-bottom: 1px solid #eee; }
-    th {
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    th:hover { background: #0056b3; }
+    th { background: #007bff; color: white; cursor: pointer; }
     tr:nth-child(even) { background: #f8f9fa; }
-    tr:hover { background: #e9ecef; }
-    .section {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin: 40px 0;
-    }
-    input, select, button {
-      padding: 12px;
-      margin: 10px 8px 10px 0;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      background: #28a745;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover { background: #218838; }
-    .gumroad-btn {
-      background: #ff5a5f !important;
-      padding: 12px 24px;
-      font-size: 18px;
-      margin: 10px;
-      text-decoration: none;
-      color: white;
-      border-radius: 6px;
-      display: inline-block;
-    }
-    .disclaimer {
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-      margin: 20px 0;
-      font-style: italic;
-    }
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      color: #666;
-      border-top: 1px solid #ddd;
-      margin-top: 50px;
-    }
-    @media (max-width: 768px) {
-      table thead { display: none; }
-      tr { display: block; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; padding: 10px; }
-      td { display: block; text-align: right; position: relative; padding-left: 50%; border: none; }
-      td:before { content: attr(data-label); position: absolute; left: 10px; width: 45%; font-weight: bold; text-align: left; }
-    }
+    .section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 40px 0; }
+    input, select, button { padding: 12px; margin: 10px 8px 10px 0; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; }
+    button { background: #28a745; color: white; border: none; cursor: pointer; }
+    .gumroad-button { background: #ff5a5f; color: white; padding: 14px 28px; font-size: 18px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: bold; }
+    .gumroad-button:hover { background: #e94e58; }
+    footer { text-align: center; padding: 30px 0; color: #666; border-top: 1px solid #ddd; margin-top: 50px; }
   </style>
 </head>
 <body>
@@ -110,23 +30,16 @@
       <circle cx="50" cy="35" r="8" fill="#0056b3"/>
     </svg>
     <h1>UK Mortgage Rate Tracker</h1>
-    <p>Daily best fixed-rate deals — spot drops, remortgage cheaper, save £££s. Free alerts + calculator below!</p>
+    <p>Daily best fixed-rate deals — spot drops and save on remortgage. Free alerts + premium upgrades below!</p>
   </header>
 
-  <p class="disclaimer">Not financial advice. Rates change fast — verify with lenders/brokers. Data from HOA, L&C, Uswitch etc.</p>
-
   <div class="section">
-    <h2>Top Fixed-Rate Deals (60% LTV focus)</h2>
+    <h2>Top Fixed-Rate Deals</h2>
     <p>Last updated: <span id="updated">Loading...</span> | <a href="https://github.com/Rent-checker-CEO/mortgage-rate-tracker">Source on GitHub</a></p>
     <table id="deals-table">
       <thead>
         <tr>
-          <th data-label="Term">Term</th>
-          <th data-label="Lender">Lender</th>
-          <th data-label="Rate (%)">Rate (%)</th>
-          <th data-label="LTV (%)">LTV (%)</th>
-          <th data-label="Fee (£)">Fee (£)</th>
-          <th data-label="Notes">Notes</th>
+          <th>Term</th><th>Lender</th><th>Rate (%)</th><th>LTV (%)</th><th>Fee (£)</th><th>Notes</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -156,19 +69,20 @@
   </div>
 
   <div class="section">
-    <h2>Premium Upgrades via Gumroad</h2>
-    <p>Unlock more features and tools:</p>
-    <a href="YOUR_GUMROAD_PRODUCT_LINK_1" class="gumroad-btn">£1.99 – Premium Alerts + Spreadsheet Template</a><br>
-    <a href="YOUR_GUMROAD_PRODUCT_LINK_2" class="gumroad-btn">£9.99 – Full Remortgage Checklist PDF</a>
+    <h2>Premium Upgrades</h2>
+    <p>Unlock priority alerts, templates, checklists & more:</p>
+    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/qbcxso">Buy £2.99 – Premium Alerts + Spreadsheet Template</a>
+    <br>
+    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/cpquh">Buy £9.99 – Full Remortgage Checklist PDF</a>
   </div>
 
+  <!-- Gumroad overlay script for popup checkout -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+
   <script>
-    // Load deals
+    // Load deals from deals.json (your existing code)
     fetch('deals.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to load deals.json');
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         document.getElementById('updated').textContent = data.updated;
         const tbody = document.querySelector('#deals-table tbody');
@@ -176,22 +90,19 @@
         data.deals.forEach(deal => {
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td data-label="Term">${deal.term}</td>
-            <td data-label="Lender">${deal.lender}</td>
-            <td data-label="Rate (%)">${deal.rate}</td>
-            <td data-label="LTV (%)">${deal.ltv}</td>
-            <td data-label="Fee (£)">${deal.fee}</td>
-            <td data-label="Notes">${deal.notes}</td>
+            <td>${deal.term}</td>
+            <td>${deal.lender}</td>
+            <td>${deal.rate}</td>
+            <td>${deal.ltv}</td>
+            <td>${deal.fee}</td>
+            <td>${deal.notes}</td>
           `;
           tbody.appendChild(row);
         });
       })
-      .catch(err => {
-        console.error('Error:', err);
-        document.getElementById('updated').textContent = 'Error loading – check deals.json';
-      });
+      .catch(err => console.error('Error loading deals:', err));
 
-    // Table sorting
+    // Table sorting (your existing code)
     document.querySelectorAll('#deals-table th').forEach((header, index) => {
       header.addEventListener('click', () => {
         const table = document.getElementById('deals-table');
@@ -207,7 +118,7 @@
       });
     });
 
-    // Remortgage calculator
+    // Remortgage calculator (your existing code)
     function calculateMortgage() {
       const P = parseFloat(document.getElementById('loanAmount').value);
       const annualRate = parseFloat(document.getElementById('interestRate').value) / 100;
@@ -226,7 +137,7 @@
   </script>
 
   <footer>
-    <p>© 2026 Mortgage Rate Tracker | Built with GitHub Pages | Data updated manually from trusted sources.</p>
+    <p>© 2026 Mortgage Rate Tracker | Built with GitHub Pages</p>
   </footer>
 </body>
 </html>
