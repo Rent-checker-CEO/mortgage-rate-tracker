@@ -3,141 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UK Mortgage Rate Tracker – Spot Drops & Save</title>
+  <title>Mortgage Rate Alert – Save Money When Rates Drop</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; background: #f8f9fa; }
-    header { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 60px 20px; text-align: center; border-radius: 0 0 16px 16px; margin-bottom: 30px; }
-    .logo { width: 80px; height: 80px; margin-bottom: 15px; }
-    h1 { margin: 0; font-size: 2.8em; }
-    h2 { color: #222; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 40px; }
-    table { width: 100%; border-collapse: collapse; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background: white; border-radius: 8px; overflow: hidden; }
-    th, td { padding: 14px; text-align: left; border-bottom: 1px solid #eee; }
-    th { background: #007bff; color: white; cursor: pointer; }
-    tr:nth-child(even) { background: #f8f9fa; }
-    .section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 40px 0; }
-    input, select, button { padding: 12px; margin: 10px 8px 10px 0; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; }
-    button { background: #28a745; color: white; border: none; cursor: pointer; }
-    .gumroad-button { background: #ff5a5f; color: white; padding: 14px 28px; font-size: 18px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: bold; }
-    .gumroad-button:hover { background: #e94e58; }
-    footer { text-align: center; padding: 30px 0; color: #666; border-top: 1px solid #ddd; margin-top: 50px; }
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+    header { text-align: center; padding: 40px 20px; background: #007bff; color: white; border-radius: 0 0 12px 12px; }
+    h1 { margin: 0; font-size: 2.5em; }
+    .hero { font-size: 1.3em; max-width: 700px; margin: 20px auto; }
+    .section { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 30px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f4f4f4; }
+    button { background: #28a745; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    .gumroad-button { background: #ff5a5f; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 10px 0; }
+    footer { text-align: center; margin-top: 40px; color: #666; }
   </style>
 </head>
 <body>
   <header>
-    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 15 L15 50 L20 85 L80 85 L85 50 Z" fill="#ffffff" stroke="#0056b3" stroke-width="4"/>
-      <rect x="35" y="50" width="30" height="35" fill="#ffffff" stroke="#0056b3" stroke-width="4"/>
-      <circle cx="50" cy="35" r="8" fill="#0056b3"/>
-    </svg>
-    <h1>UK Mortgage Rate Tracker</h1>
-    <p>Daily best fixed-rate deals — spot drops and save on remortgage. Free alerts + premium upgrades below!</p>
+    <h1>Mortgage Rate Alert</h1>
+    <p class="hero"><strong>Who it's for:</strong> Homeowners, first-time buyers, and remortgagers in the UK looking to save money.</p>
+    <p class="hero"><strong>What it does:</strong> Tracks the best daily fixed-rate deals (2yr/5yr) and alerts you when rates drop below your target.</p>
+    <p class="hero"><strong>Why you should care:</strong> A 0.5% rate drop on a £200k mortgage can save you £500–£1,000+ per year. Get ahead free — or upgrade for premium tools.</p>
   </header>
 
   <div class="section">
-    <h2>Top Fixed-Rate Deals</h2>
-    <p>Last updated: <span id="updated">Loading...</span> | <a href="https://github.com/Rent-checker-CEO/mortgage-rate-tracker">Source on GitHub</a></p>
+    <h2>Current Top Deals</h2>
+    <p>Last updated: <span id="updated">Loading...</span></p>
     <table id="deals-table">
       <thead>
-        <tr>
-          <th>Term</th><th>Lender</th><th>Rate (%)</th><th>LTV (%)</th><th>Fee (£)</th><th>Notes</th>
-        </tr>
+        <tr><th>Term</th><th>Lender</th><th>Rate (%)</th><th>LTV (%)</th><th>Fee (£)</th><th>Notes</th></tr>
       </thead>
       <tbody></tbody>
     </table>
   </div>
 
   <div class="section">
-    <h2>Remortgage Calculator – Estimate Monthly Payments</h2>
-    <p>Enter your details to see potential monthly repayments on a repayment mortgage (capital + interest).</p>
+    <h2>Remortgage Calculator</h2>
     <form id="calcForm">
-      <label>Loan Amount (£):</label><br>
-      <input type="number" id="loanAmount" placeholder="e.g. 200000" required min="1000"><br>
-      <label>Interest Rate (%):</label><br>
-      <input type="number" id="interestRate" placeholder="e.g. 3.75" step="0.01" required min="0"><br>
-      <label>Term (Years):</label><br>
-      <input type="number" id="termYears" placeholder="e.g. 25" required min="1"><br>
+      <label>Loan Amount (£):</label><br><input type="number" id="loanAmount" placeholder="200000" required><br>
+      <label>Interest Rate (%):</label><br><input type="number" id="interestRate" placeholder="3.75" step="0.01" required><br>
+      <label>Term (Years):</label><br><input type="number" id="termYears" placeholder="25" required><br>
       <button type="button" onclick="calculateMortgage()">Calculate</button>
     </form>
-    <p id="calcResult" style="margin-top:20px; font-weight:bold; color:#28a745;"></p>
+    <p id="calcResult" style="margin-top:15px; font-weight:bold;"></p>
   </div>
 
   <div class="section">
-    <h2>Get Real Email Alerts When Rates Drop</h2>
-    <p>Sign up below — we'll notify you if rates fall below your threshold (via email, powered by Google Forms).</p>
-    <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSclbKRu_NKCBfeyItgEcmAMTsxjf-CR6_EixS-PApPM3vDqhQ/viewform', '_blank')">Sign Up for Free Rate Drop Alerts</button>
-    <p style="margin-top:15px;">(Opens form in new tab – enter email, threshold e.g. 4.0, term. Responses to your Google Sheet.)</p>
+    <h2>Free Rate Drop Alerts</h2>
+    <p>Sign up for email notifications when rates fall below your target.</p>
+    <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSclbKRu_NKCBfeyItgEcmAMTsxjf-CR6_EixS-PApPM3vDqhQ/viewform', '_blank')">Sign Up Free</button>
   </div>
 
   <div class="section">
     <h2>Premium Upgrades</h2>
-    <p>Unlock priority alerts, templates, checklists & more:</p>
-    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/qbcxso">Buy £2.99 – Premium Alerts + Spreadsheet Template</a>
-    <br>
-    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/cpquh">Buy £9.99 – Full Remortgage Checklist PDF</a>
+    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/qbcxso">£2.99 – Premium Alerts + Tracker Template</a><br>
+    <a class="gumroad-button" href="https://tkuser6.gumroad.com/l/cpquh">£9.99 – Full Remortgage Checklist PDF</a>
   </div>
 
-  <!-- Gumroad overlay script for popup checkout -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 
   <script>
-    // Load deals from deals.json (your existing code)
     fetch('deals.json')
       .then(res => res.json())
       .then(data => {
         document.getElementById('updated').textContent = data.updated;
-        const tbody = document.querySelector('#deals-table tbody');
+        const tbody = document.getElementById('deals-table').querySelector('tbody');
         tbody.innerHTML = '';
         data.deals.forEach(deal => {
           const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${deal.term}</td>
-            <td>${deal.lender}</td>
-            <td>${deal.rate}</td>
-            <td>${deal.ltv}</td>
-            <td>${deal.fee}</td>
-            <td>${deal.notes}</td>
-          `;
+          row.innerHTML = `<td>${deal.term}</td><td>${deal.lender}</td><td>${deal.rate}</td><td>${deal.ltv}</td><td>${deal.fee}</td><td>${deal.notes}</td>`;
           tbody.appendChild(row);
         });
       })
-      .catch(err => console.error('Error loading deals:', err));
+      .catch(() => document.getElementById('updated').textContent = 'Error loading');
 
-    // Table sorting (your existing code)
-    document.querySelectorAll('#deals-table th').forEach((header, index) => {
-      header.addEventListener('click', () => {
-        const table = document.getElementById('deals-table');
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const isNumeric = [2,3,4].includes(index);
-        rows.sort((a, b) => {
-          let valA = a.cells[index].textContent.trim();
-          let valB = b.cells[index].textContent.trim();
-          if (isNumeric) return parseFloat(valA) - parseFloat(valB);
-          return valA.localeCompare(valB);
-        });
-        rows.forEach(row => table.querySelector('tbody').appendChild(row));
-      });
-    });
-
-    // Remortgage calculator (your existing code)
     function calculateMortgage() {
       const P = parseFloat(document.getElementById('loanAmount').value);
-      const annualRate = parseFloat(document.getElementById('interestRate').value) / 100;
-      const years = parseInt(document.getElementById('termYears').value);
-      if (isNaN(P) || isNaN(annualRate) || isNaN(years) || P <= 0 || annualRate < 0 || years <= 0) {
-        document.getElementById('calcResult').innerHTML = 'Please enter valid numbers.';
-        return;
-      }
-      const r = annualRate / 12;
-      const n = years * 12;
+      const r = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+      const n = parseInt(document.getElementById('termYears').value) * 12;
+      if (isNaN(P) || isNaN(r) || isNaN(n)) return;
       const M = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      const total = M * n;
-      document.getElementById('calcResult').innerHTML = 
-        `Estimated monthly payment: £${M.toFixed(2)}<br>Total repayable over ${years} years: £${total.toFixed(2)}`;
+      document.getElementById('calcResult').innerHTML = `Monthly: £${M.toFixed(2)} | Total: £${(M * n).toFixed(2)}`;
     }
   </script>
 
   <footer>
-    <p>© 2026 Mortgage Rate Tracker | Built with GitHub Pages</p>
+    <p>© 2026 Mortgage Rate Alert • Built for UK homeowners • Not financial advice</p>
   </footer>
 </body>
 </html>
